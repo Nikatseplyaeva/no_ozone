@@ -10,7 +10,7 @@ use yii\grid\GridView;
 /** @var app\modules\admin\models\FavouriteSearch $searchModel */
 /** @var yii\data\ActiveDataProvider $dataProvider */
 
-$this->title = 'Favourites';
+$this->title = 'Избранное';
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="favourite-index">
@@ -18,7 +18,7 @@ $this->params['breadcrumbs'][] = $this->title;
     <h1><?= Html::encode($this->title) ?></h1>
 
     <p>
-        <?= Html::a('Create Favourite', ['create'], ['class' => 'btn btn-success']) ?>
+        <?= Html::a('Добавить избранное', ['create'], ['class' => 'btn btn-success']) ?>
     </p>
 
     <?php // echo $this->render('_search', ['model' => $searchModel]); ?>

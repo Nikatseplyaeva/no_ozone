@@ -1,13 +1,17 @@
 <?php
 
 namespace app\modules\admin\controllers;
-
+use Yii;
 use app\modules\admin\models\Company;
 use app\modules\admin\models\CompanySearch;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
 use yii\behaviors\TimestampBehavior;
+use app\models\UploadForm;
+use yii\web\UploadedFile;
+use app\modules\admin\models\Image;
+
 
 /**
  * CompanyController implements the CRUD actions for Company model.
@@ -70,15 +74,46 @@ class CompanyController extends Controller
     {
         $model = new Company();
         $model->created_at = date("Y-m-d H:i:s");
-
-        if ($this->request->isPost) {
-            if ($model->load($this->request->post()) && $model->save()) {
-                return $this->redirect(['view', 'id' => $model->id]);
-            }
+        $model->updated_at = date("Y-m-d H:i:s");
+           /*if ($this->request->isPost) { 
+            if ($model->load($this->request->post())) { 
+                  $model->imageFile = UploadedFile::getInstance($model, 'imageFile'); 
+                if ($model->upload()) { 
+                   $file = new Image(); 
+                   $file->puth = $model->imageFile;
+                   $file->save(); 
+                    return; 
+                 } 
+                 $model->imageFile = $file->id; 
+                 $model->save(); 
+                Yii::$app->user->login($model); 
+                return $this->redirect(['view', 'id' => $model->id]); 
+            } 
         } else {
             $model->loadDefaultValues();
         }
 
+        return $this->render('create', [
+            'model' => $model,
+        ]);*/
+
+        if ($this->request->isPost) {
+            if ($model->load($this->request->post())) {
+                $imageFile1 = UploadedFile::getInstance($model, 'imageFile');
+                $imageFile1->saveAs('uploads/' . $imageFile1->baseName . '.' . $imageFile1->extension);
+                $model->imageFile = $imageFile1->baseName . '.' . $imageFile1->extension;
+                $model2 = new Image();
+                $model2->name = $imageFile1->baseName . '.' . $imageFile1->extension;
+                $model2->puth = $imageFile1->baseName . '.' . $imageFile1->extension;
+                error_log(print_r($model, true));
+                $model->save();
+                $model2->save();
+                return $this->redirect(['view', 'id' => $model->id]);
+                
+                 
+        }} else {
+            $model->loadDefaultValues();
+        }
         return $this->render('create', [
             'model' => $model,
         ]);
@@ -134,4 +169,6 @@ class CompanyController extends Controller
 
         throw new NotFoundHttpException('The requested page does not exist.');
     }
+
+   
 }

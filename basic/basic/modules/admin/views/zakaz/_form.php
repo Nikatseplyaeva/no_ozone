@@ -14,7 +14,7 @@ use yii\helpers\ArrayHelper;
     <?php $form = ActiveForm::begin(); ?>
 
     <?php
-        $user = app\modules\admin\models\User::find()->all(); 
+        $user = app\models\User::find()->all(); 
         $items = ArrayHelper::map($user,'id','name');
         $params = [
             'prompt' => 'Выберите пользователя'
@@ -44,7 +44,7 @@ use yii\helpers\ArrayHelper;
     ?>
 
     <div class="form-group">
-        <?= Html::submitButton('Save', ['class' => 'btn btn-success']) ?>
+        <?= Html::submitButton('Сохранить', ['class' => 'btn btn-success']) ?>
     </div>
 
     <?php ActiveForm::end(); ?>

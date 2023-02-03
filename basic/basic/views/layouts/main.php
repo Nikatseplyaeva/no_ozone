@@ -35,12 +35,12 @@ AppAsset::register($this);
         ],
     ]);
     $items = [];
-    if(Yii::$app->user->isGuest) {
+    if(Yii::$app->user->isGuest) { //вход как гость
         $items[] =  ['label' => 'Главная', 'url' => ['/site/index']];
         $items[] =  ['label' => 'Регистрация', 'url' => ['/user/create']];
         $items[] =  ['label' => 'Вход', 'url' => ['/site/login']];
     } else {
-        if(Yii::$app->user->identity->role == 1){
+        if(Yii::$app->user->identity->role == 1){ //вход как администратор
             $items[] =  ['label' => 'Главная', 'url' => ['/site/index']];
             $items[] =  ['label' => 'Адрес', 'url' => ['/admin/address']];
             $items[] =  ['label' => 'Банковская карта', 'url' => ['/admin/bank-card']];
@@ -55,7 +55,7 @@ AppAsset::register($this);
             $items[] =  ['label' => 'Пользователь', 'url' => ['/user']];
             $items[] =  ['label' => 'Информация о заказе', 'url' => ['/admin/zakaz-info']];
             $items[] =  ['label' => 'Заказ', 'url' => ['/admin/zakaz']];
-        } else {
+        } else { //вход как пользователь
             $items[] =  ['label' => 'Главная', 'url' => ['/site/index']];
         }
         $items[] = '<li>'

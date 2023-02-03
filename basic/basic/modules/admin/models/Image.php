@@ -31,7 +31,7 @@ class Image extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['name', 'puth'], 'required'],
+           
             [['name', 'puth'], 'string', 'max' => 250],
         ];
     }

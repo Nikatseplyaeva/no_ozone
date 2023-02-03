@@ -10,7 +10,7 @@ use yii\grid\GridView;
 /** @var app\modules\admin\models\ImageSearch $searchModel */
 /** @var yii\data\ActiveDataProvider $dataProvider */
 
-$this->title = 'Images';
+$this->title = 'Изображения';
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="image-index">
@@ -18,7 +18,7 @@ $this->params['breadcrumbs'][] = $this->title;
     <h1><?= Html::encode($this->title) ?></h1>
 
     <p>
-        <?= Html::a('Create Image', ['create'], ['class' => 'btn btn-success']) ?>
+        <?= Html::a('Добавить изображение', ['create'], ['class' => 'btn btn-success']) ?>
     </p>
 
     <?php // echo $this->render('_search', ['model' => $searchModel]); ?>

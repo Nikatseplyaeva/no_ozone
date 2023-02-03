@@ -6,7 +6,7 @@ use yii\helpers\Html;
 /** @var app\modules\admin\models\Zakaz $model */
 
 $this->title = 'Добавить заказ';
-$this->params['breadcrumbs'][] = ['label' => 'Zakazs', 'url' => ['index']];
+$this->params['breadcrumbs'][] = ['label' => 'Заказы', 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="zakaz-create">

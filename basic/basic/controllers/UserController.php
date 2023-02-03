@@ -2,12 +2,15 @@
 
 namespace app\controllers;
 
+use Yii;
 use app\models\User;
 use app\models\RegForm;
 use app\models\UserSearch;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
+use app\modules\admin\models\City;
+use app\utils\CDateTimeParser;
 
 /**
  * UserController implements the CRUD actions for User model.
@@ -68,8 +71,11 @@ class UserController extends Controller
      */
     public function actionCreate()
     {
-        $model = new RegForm();
-
+        $model = new RegForm(); //используем форму регистрации
+        //$date = Yii::$app->formatter->asDate($model->date_of_birth,'dd.MM.yyyy');
+       // $model->date_of_birth = date_parse_from_format($model->date_of_birth,"dd.MM.yyyy");
+        
+       
         if ($this->request->isPost) {
             if ($model->load($this->request->post()) && $model->save()) {
                 Yii::$app->user->login($model);
@@ -94,7 +100,7 @@ class UserController extends Controller
     public function actionUpdate($id)
     {
         $model = $this->findModel($id);
-
+        $model->date_of_birth = date_parse_from_format($model->date_of_birth,"dd.MM.yyyy");
         if ($this->request->isPost && $model->load($this->request->post()) && $model->save()) {
             return $this->redirect(['view', 'id' => $model->id]);
         }

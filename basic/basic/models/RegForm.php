@@ -1,7 +1,9 @@
 <?php
 
 namespace app\models;
-
+use app\modules\admin\models\BankCard;
+use app\modules\admin\models\City;
+use app\modules\admin\models\Image;
 use Yii;
 
 /**
@@ -34,7 +36,6 @@ use Yii;
 class RegForm extends User
 {
     public $passwordConfirm;
-    public $agree;
     
 
     /**
@@ -43,14 +44,14 @@ class RegForm extends User
     public function rules()
     {
         return [
-            [['name', 'login', 'password', 'email', 'phone', 'id_city', 'valuta', 'date_of_birth', 'sex', 'role', 'id_bank_card', 'passwordConfirm'], 'required', 'message' => 'Поле обязательно для заполнения!'],
+            [['name', 'login', 'password', 'email', 'phone', 'id_city', 'valuta', 'date_of_birth', 'sex', 'role', 'id_bank_card', 'passwordConfirm'], 'required', 'message' => 'Поле обязательно для заполнения!'], //обязательные поля
             [['id_city', 'id_image', 'id_bank_card'], 'integer'],
             [['date_of_birth'], 'safe'],
-            [['email'], 'email', 'message' => 'Не корректный email!'],
+            [['email'], 'email', 'message' => 'Не корректный email!'], //валидация почты
             //['passwordConfirm', 'compare', 'compareAttribute' => 'password', 'message' => 'Пароли должны совпадать!'],
-            ['name', 'match', 'pattern' => '/^[А-Яа-я\s\-]{3,30}$/u', 'message' => 'Только кириллица, пробелы и дефисы!'],
-            ['login', 'match', 'pattern' => '/^[A-za-z0-9\s\-]{3,30}$/u', 'message' => 'Только латинские буквы и цифры!'],
-            ['login', 'unique', 'message' => 'Такой логин уже есть'],
+            ['name', 'match', 'pattern' => '/^[А-Яа-я\s\-]{3,30}$/u', 'message' => 'Только кириллица, пробелы и дефисы!'], //валидация имени
+            ['login', 'match', 'pattern' => '/^[A-za-z0-9\s\-]{3,30}$/u', 'message' => 'Только латинские буквы и цифры!'], //валидация логина
+            ['login', 'unique', 'message' => 'Такой логин уже есть'], //проверка есть ли такой логин
             [['name', 'login', 'password', 'phone', 'valuta', 'sex', 'role'], 'string', 'max' => 250],
             [['id_bank_card'], 'exist', 'skipOnError' => true, 'targetClass' => BankCard::class, 'targetAttribute' => ['id_bank_card' => 'id']],
             [['id_city'], 'exist', 'skipOnError' => true, 'targetClass' => City::class, 'targetAttribute' => ['id_city' => 'id']],

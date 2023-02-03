@@ -17,8 +17,8 @@ class CompanySearch extends Company
     public function rules()
     {
         return [
-            [['id', 'id_image'], 'integer'],
-            [['name', 'inn', 'created_at', 'updated_at', 'created_by'], 'safe'],
+            [['id'], 'integer'],
+            [['name', 'inn', 'created_at','imageFile', 'updated_at', 'created_by'], 'safe'],
         ];
     }
 
@@ -59,7 +59,6 @@ class CompanySearch extends Company
         // grid filtering conditions
         $query->andFilterWhere([
             'id' => $this->id,
-            'id_image' => $this->id_image,
             'created_at' => $this->created_at,
             'updated_at' => $this->updated_at,
         ]);

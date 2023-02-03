@@ -6,7 +6,7 @@ use yii\helpers\Html;
 /** @var app\modules\admin\models\Company $model */
 
 $this->title = 'Добавить компанию';
-$this->params['breadcrumbs'][] = ['label' => 'Companies', 'url' => ['index']];
+$this->params['breadcrumbs'][] = ['label' => 'Компании', 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="company-create">

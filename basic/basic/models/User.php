@@ -1,7 +1,9 @@
 <?php
 
 namespace app\models;
-
+use app\modules\admin\models\BankCard;
+use app\modules\admin\models\City;
+use app\modules\admin\models\Image;
 use Yii;
 
 /**
@@ -33,6 +35,7 @@ use Yii;
  */
 class User extends \yii\db\ActiveRecord  implements \yii\web\IdentityInterface
 {
+
     /**
      * {@inheritdoc}
      */
@@ -52,7 +55,7 @@ class User extends \yii\db\ActiveRecord  implements \yii\web\IdentityInterface
             [['date_of_birth'], 'date'],
             [['email'], 'email'],
             [['phone'], 'integer'],
-            [['name', 'login', 'password', 'email', 'valuta', 'sex', 'role'], 'string', 'max' => 250],
+            [['name', 'login', 'password', 'email', 'valuta', 'sex', 'role', 'date_of_birth'], 'string', 'max' => 250],
             [['id_bank_card'], 'exist', 'skipOnError' => true, 'targetClass' => BankCard::class, 'targetAttribute' => ['id_bank_card' => 'id']],
             [['id_city'], 'exist', 'skipOnError' => true, 'targetClass' => City::class, 'targetAttribute' => ['id_city' => 'id']],
             [['id_image'], 'exist', 'skipOnError' => true, 'targetClass' => Image::class, 'targetAttribute' => ['id_image' => 'id']],
@@ -184,6 +187,8 @@ class User extends \yii\db\ActiveRecord  implements \yii\web\IdentityInterface
 
    }
 
+   /* авторизация */
+
    /**
     * Finds user by username
     *
@@ -192,7 +197,7 @@ class User extends \yii\db\ActiveRecord  implements \yii\web\IdentityInterface
     */
    public static function findByUsername($username)
    {
-       return self::find()->where(['login' => $username])->one();
+       return self::find()->where(['login' => $username])->one(); //заменяем все username на login
    }
 
    /**
@@ -230,5 +235,17 @@ class User extends \yii\db\ActiveRecord  implements \yii\web\IdentityInterface
        return $this->password === $password;
    }
 
+   
+   /**
+    * Название роли
+    * @param int $id
+    * @return mixed|null
+    */
+   public function getRoleName(int $id)
+   {
+       $list = self::roles();
+       return $list[$id] ?? null;
+   }
+   
 
 }

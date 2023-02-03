@@ -5,8 +5,8 @@ use yii\helpers\Html;
 /** @var yii\web\View $this */
 /** @var app\modules\admin\models\Image $model */
 
-$this->title = 'Update Image: ' . $model->name;
-$this->params['breadcrumbs'][] = ['label' => 'Images', 'url' => ['index']];
+$this->title = 'Обновить изображение: ' . $model->name;
+$this->params['breadcrumbs'][] = ['label' => 'Изображения', 'url' => ['index']];
 $this->params['breadcrumbs'][] = ['label' => $model->name, 'url' => ['view', 'id' => $model->id]];
 $this->params['breadcrumbs'][] = 'Update';
 ?>

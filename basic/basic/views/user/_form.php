@@ -45,8 +45,7 @@ use yii\jui\DatePicker;
         echo $form->field($model, 'valuta')->dropDownList($items,$params);
     ?>
 
-    <?= $form->field($model, 'date_of_birth')->input('date', [
-    'dateFormat' => 'yyyy-MM-dd']) ?>
+    <?= $form->field($model, 'date_of_birth')->input('date') ?>
 
     <?php
         $items = [
@@ -81,7 +80,7 @@ use yii\jui\DatePicker;
     ?>
 
     <div class="form-group">
-        <?= Html::submitButton('Save', ['class' => 'btn btn-success']) ?>
+        <?= Html::submitButton('Сохранить', ['class' => 'btn btn-success']) ?>
     </div>
 
     <?php ActiveForm::end(); ?>
