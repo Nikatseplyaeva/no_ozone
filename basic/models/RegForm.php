@@ -20,7 +20,6 @@ use Yii;
  * @property string $date_of_birth
  * @property string $sex
  * @property string $role
- * @property int $id_image
  * @property int $id_bank_card
  *
  * @property Address[] $addresses
@@ -44,18 +43,15 @@ class RegForm extends User
     public function rules()
     {
         return [
-            [['name', 'login', 'password', 'email', 'phone', 'id_city', 'valuta', 'date_of_birth', 'sex', 'role', 'id_bank_card', 'passwordConfirm'], 'required', 'message' => 'Поле обязательно для заполнения!'], //обязательные поля
-            [['id_city', 'id_image', 'id_bank_card'], 'integer'],
-            [['date_of_birth'], 'safe'],
+            [['name', 'login', 'password', 'email', 'phone', 'id_city', 'valuta', 'date_of_birth', 'sex', 'role', 'id_bank_card'], 'required', 'message' => 'Поле обязательно для заполнения!'], //обязательные поля
+            [['id_city', 'id_bank_card'], 'integer'],
+            ['login', 'unique', 'message' => 'Такой логин уже есть'], //проверка есть ли такой логин
             [['email'], 'email', 'message' => 'Не корректный email!'], //валидация почты
-            //['passwordConfirm', 'compare', 'compareAttribute' => 'password', 'message' => 'Пароли должны совпадать!'],
             ['name', 'match', 'pattern' => '/^[А-Яа-я\s\-]{3,30}$/u', 'message' => 'Только кириллица, пробелы и дефисы!'], //валидация имени
             ['login', 'match', 'pattern' => '/^[A-za-z0-9\s\-]{3,30}$/u', 'message' => 'Только латинские буквы и цифры!'], //валидация логина
-            ['login', 'unique', 'message' => 'Такой логин уже есть'], //проверка есть ли такой логин
             [['name', 'login', 'password', 'phone', 'valuta', 'sex', 'role'], 'string', 'max' => 250],
             [['id_bank_card'], 'exist', 'skipOnError' => true, 'targetClass' => BankCard::class, 'targetAttribute' => ['id_bank_card' => 'id']],
             [['id_city'], 'exist', 'skipOnError' => true, 'targetClass' => City::class, 'targetAttribute' => ['id_city' => 'id']],
-            [['id_image'], 'exist', 'skipOnError' => true, 'targetClass' => Image::class, 'targetAttribute' => ['id_image' => 'id']],
         ];
     }
 
@@ -76,9 +72,8 @@ class RegForm extends User
             'date_of_birth' => 'Дата рождения',
             'sex' => 'Пол',
             'role' => 'Роль',
-            'id_image' => 'Изображение',
+            'imageFile' => 'Изображение',
             'id_bank_card' => 'Банковская карта',
-            //'passwordConfirm' => 'Подтверждение пароля',
         ];
     }
 

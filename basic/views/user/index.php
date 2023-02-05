@@ -39,7 +39,6 @@ $this->params['breadcrumbs'][] = $this->title;
             'valuta',
             'date_of_birth',
             'sex',
-            'role',
             'id_bank_card',
             'imageFile',
             [

@@ -5,6 +5,8 @@ use yii\widgets\ActiveForm;
 use yii\behaviors\TimestampBehavior;
 use yii\db\Expression;
 use yii\helpers\ArrayHelper;
+use app\models\User;
+use app\models\RegForm;
 
 /** @var yii\web\View $this */
 /** @var app\modules\admin\models\User $model */
@@ -19,7 +21,7 @@ use yii\helpers\ArrayHelper;
 
     <?= $form->field($model, 'login')->textInput(['maxlength' => true]) ?>
 
-    <?= $form->field($model, 'password')->passwordInput(['maxlength' => true]) /*$form->field($model, 'passwordConfirm')->passwordInput(['maxlength' => true]) */?>
+    <?= $form->field($model, 'password')->passwordInput(['maxlength' => true]) ?>
 
     <?= $form->field($model, 'email')->textInput(['maxlength' => true]) ?>
 

@@ -51,8 +51,7 @@ class User extends \yii\db\ActiveRecord  implements \yii\web\IdentityInterface
     {
         return [
             [['name', 'login', 'password', 'email', 'phone', 'id_city', 'valuta', 'date_of_birth', 'sex', 'role', 'id_bank_card'], 'required'],
-            [['id_city', 'id_image', 'id_bank_card'], 'integer'],
-            [['date_of_birth'], 'date'],
+            [['id_city', 'id_bank_card'], 'integer'],
             [['email'], 'email'],
             [['phone'], 'integer'],
             ['login', 'unique', 'message' => 'Такой логин уже есть'], //проверка есть ли такой логин
