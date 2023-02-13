@@ -34,7 +34,7 @@ $this->params['breadcrumbs'][] = $this->title;
             'validati_thru',
             'CVV',
             [
-                'class' => ActionColumn::className(),
+                'class' => ActionColumn::className(), 'headerOptions' => ['width' => '60'], 'visible' => $hasAccess,
                 'urlCreator' => function ($action, BankCard $model, $key, $index, $column) {
                     return Url::toRoute([$action, 'id' => $model->id]);
                  }

@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1:3306
--- Generation Time: Feb 03, 2023 at 02:19 PM
+-- Generation Time: Feb 06, 2023 at 11:25 AM
 -- Server version: 8.0.30
 -- PHP Version: 8.0.22
 
@@ -226,7 +226,18 @@ INSERT INTO `image` (`id`, `name`, `puth`) VALUES
 (14, 'vk.png', 'vk.png'),
 (15, '1284581772.jpg', '1284581772.jpg'),
 (16, '1284581772.jpg', '1284581772.jpg'),
-(17, 'telegram.png', 'telegram.png');
+(17, 'telegram.png', 'telegram.png'),
+(18, 'tiktok.png', 'tiktok.png'),
+(19, 'original_cac974ed-4be1-4ccf-9142-ec8c7ae789b9.webp', 'original_cac974ed-4be1-4ccf-9142-ec8c7ae789b9.webp'),
+(20, 'original_cac974ed-4be1-4ccf-9142-ec8c7ae789b9.webp', 'original_cac974ed-4be1-4ccf-9142-ec8c7ae789b9.webp'),
+(21, 'original_974df62e-9611-4e0c-a668-d5005bdc3934.jpg', 'original_974df62e-9611-4e0c-a668-d5005bdc3934.jpg'),
+(22, 'original_974df62e-9611-4e0c-a668-d5005bdc3934.jpg', 'original_974df62e-9611-4e0c-a668-d5005bdc3934.jpg'),
+(23, 'insung-yoon-eknZ087NjtM-unsplash.jpg', 'insung-yoon-eknZ087NjtM-unsplash.jpg'),
+(24, '89nCXmmcLpA.jpg', '89nCXmmcLpA.jpg'),
+(25, '2022_12_06_menopause_1920x1080_01.png', '2022_12_06_menopause_1920x1080_01.png'),
+(26, '43d65c254d281aeed898e639e9272ace.png', '43d65c254d281aeed898e639e9272ace.png'),
+(27, '43d65c254d281aeed898e639e9272ace.png', '43d65c254d281aeed898e639e9272ace.png'),
+(28, '43d65c254d281aeed898e639e9272ace.png', '43d65c254d281aeed898e639e9272ace.png');
 
 -- --------------------------------------------------------
 
@@ -318,7 +329,9 @@ CREATE TABLE `user` (
 
 INSERT INTO `user` (`id`, `name`, `login`, `password`, `email`, `phone`, `id_city`, `valuta`, `date_of_birth`, `sex`, `role`, `imageFile`, `id_bank_card`) VALUES
 (2, 'ника', 'nika', 'nika', 'nika@gmail.com', '123', 1, 'RUB', '2003-12-12', '1', '0', '2', 2),
-(3, 'Админ', 'admin', 'admin', 'admin@gmail.com', '123', 1, '1', '2022-12-12', '2', '1', '1', 1);
+(3, 'Админ', 'admin', 'admin', 'admin@gmail.com', '123', 1, '1', '2022-12-12', '2', '1', '1', 1),
+(4, 'Крис', 'kriss', 'kriss', 'kriss@gmail.com', '88005553535', 6, 'EUR', '2003-11-11', '0', '0', '89nCXmmcLpA.jpg', 5),
+(6, 'Катя', 'kate', 'kate', 'kate@gmail.com', '88005553535', 6, 'RUB', '2003-07-15', '0', '0', '43d65c254d281aeed898e639e9272ace.png', 3);
 
 -- --------------------------------------------------------
 
@@ -517,7 +530,7 @@ ALTER TABLE `favourite`
 -- AUTO_INCREMENT for table `image`
 --
 ALTER TABLE `image`
-  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
+  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=29;
 
 --
 -- AUTO_INCREMENT for table `product`
@@ -535,7 +548,7 @@ ALTER TABLE `review`
 -- AUTO_INCREMENT for table `user`
 --
 ALTER TABLE `user`
-  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT for table `zakaz`

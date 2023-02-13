@@ -36,7 +36,7 @@ $this->params['breadcrumbs'][] = $this->title;
             'sum_sale',
             //'id_zakaz_info',
             [
-                'class' => ActionColumn::className(),
+                'class' => ActionColumn::className(), 'headerOptions' => ['width' => '60'], 'visible' => $hasAccess,
                 'urlCreator' => function ($action, Zakaz $model, $key, $index, $column) {
                     return Url::toRoute([$action, 'id' => $model->id]);
                  }

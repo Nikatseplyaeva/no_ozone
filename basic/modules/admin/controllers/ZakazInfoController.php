@@ -1,7 +1,7 @@
 <?php
 
 namespace app\modules\admin\controllers;
-
+use Yii;
 use app\modules\admin\models\ZakazInfo;
 use app\modules\admin\models\ZakazInfoSearch;
 use yii\web\Controller;
@@ -13,6 +13,7 @@ use yii\filters\VerbFilter;
  */
 class ZakazInfoController extends Controller
 {
+
     /**
      * @inheritDoc
      */
@@ -40,10 +41,13 @@ class ZakazInfoController extends Controller
     {
         $searchModel = new ZakazInfoSearch();
         $dataProvider = $searchModel->search($this->request->queryParams);
+        $hasAccess = (Yii::$app->user->identity->role == 0) ? false : true;
 
         return $this->render('index', [
             'searchModel' => $searchModel,
             'dataProvider' => $dataProvider,
+            'hasAccess' => $hasAccess,
+
         ]);
     }
 

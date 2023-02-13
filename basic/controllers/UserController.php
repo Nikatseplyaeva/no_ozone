@@ -9,9 +9,7 @@ use app\models\UserSearch;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
-use app\modules\admin\models\City;
 use yii\behaviors\TimestampBehavior;
-use app\models\UploadForm;
 use yii\web\UploadedFile;
 use app\modules\admin\models\Image;
 
@@ -21,6 +19,7 @@ use app\modules\admin\models\Image;
  */
 class UserController extends Controller
 {
+    public $hasAccess;
     /**
      * @inheritDoc
      */
@@ -39,6 +38,7 @@ class UserController extends Controller
         );
     }
 
+
     /**
      * Lists all User models.
      *
@@ -48,10 +48,13 @@ class UserController extends Controller
     {
         $searchModel = new UserSearch();
         $dataProvider = $searchModel->search($this->request->queryParams);
+        $hasAccess = (Yii::$app->user->identity->role == 0) ? false : true;
 
         return $this->render('index', [
             'searchModel' => $searchModel,
             'dataProvider' => $dataProvider,
+            'hasAccess' => $hasAccess,
+
         ]);
     }
 
@@ -89,7 +92,7 @@ class UserController extends Controller
                $model2->puth = $imageFile1->baseName . '.' . $imageFile1->extension;
                $model->save();
                $model2->save();
-               return Yii::$app->user->login($model);
+
                return $this->redirect(['view', 'id' => $model->id]);
            }
         } else {

@@ -45,7 +45,7 @@ $this->params['breadcrumbs'][] = $this->title;
             'updated_at',
             'created_by',
             [
-                'class' => ActionColumn::className(),
+                'class' => ActionColumn::className(), 'headerOptions' => ['width' => '60'], 'visible' => $hasAccess,
                 'urlCreator' => function ($action, Company $model, $key, $index, $column) {
                     return Url::toRoute([$action, 'id' => $model->id]);
                  }

@@ -1,7 +1,7 @@
 <?php
 
 namespace app\modules\admin\controllers;
-
+use Yii;
 use app\modules\admin\models\Image;
 use app\modules\admin\models\ImageSearch;
 use yii\web\Controller;
@@ -40,10 +40,13 @@ class ImageController extends Controller
     {
         $searchModel = new ImageSearch();
         $dataProvider = $searchModel->search($this->request->queryParams);
+        $hasAccess = (Yii::$app->user->identity->role == 0) ? false : true;
 
         return $this->render('index', [
             'searchModel' => $searchModel,
             'dataProvider' => $dataProvider,
+            'hasAccess' => $hasAccess,
+
         ]);
     }
 

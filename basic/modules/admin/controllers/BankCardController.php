@@ -1,7 +1,7 @@
 <?php
 
 namespace app\modules\admin\controllers;
-
+use Yii;
 use app\modules\admin\models\BankCard;
 use app\modules\admin\models\BankCardSearch;
 use yii\web\Controller;
@@ -40,10 +40,13 @@ class BankCardController extends Controller
     {
         $searchModel = new BankCardSearch();
         $dataProvider = $searchModel->search($this->request->queryParams);
+        $hasAccess = (Yii::$app->user->identity->role == 0) ? false : true;
 
         return $this->render('index', [
             'searchModel' => $searchModel,
             'dataProvider' => $dataProvider,
+            'hasAccess' => $hasAccess,
+
         ]);
     }
 

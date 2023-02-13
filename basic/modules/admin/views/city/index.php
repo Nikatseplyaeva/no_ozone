@@ -32,7 +32,7 @@ $this->params['breadcrumbs'][] = $this->title;
             'id',
             'name',
             [
-                'class' => ActionColumn::className(),
+                'class' => ActionColumn::className(), 'headerOptions' => ['width' => '60'], 'visible' => $hasAccess,
                 'urlCreator' => function ($action, City $model, $key, $index, $column) {
                     return Url::toRoute([$action, 'id' => $model->id]);
                  }

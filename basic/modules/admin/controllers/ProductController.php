@@ -44,10 +44,13 @@ class ProductController extends Controller
     {
         $searchModel = new ProductSearch();
         $dataProvider = $searchModel->search($this->request->queryParams);
+        $hasAccess = (Yii::$app->user->identity->role == 0) ? false : true;
 
         return $this->render('index', [
             'searchModel' => $searchModel,
             'dataProvider' => $dataProvider,
+            'hasAccess' => $hasAccess,
+
         ]);
     }
 

@@ -1,7 +1,7 @@
 <?php
 
 namespace app\modules\admin\controllers;
-
+use Yii;
 use yii\web\Controller;
 
 /**
@@ -9,10 +9,17 @@ use yii\web\Controller;
  */
 class DefaultController extends Controller
 {
-    /**
-     * Renders the index view for the module
-     * @return string
-     */
+    public function beforeAction($action) {
+        if(Yii::$app->user->isGuest || Yii::$app->user->identity->role != 1) {
+            $this->redirect(['/site/login']);
+            return false;
+        }
+
+        if (!parent::beforeAction($action)) {
+            return false;
+        }
+        return true;
+    }
     public function actionIndex()
     {
         return $this->render('index');

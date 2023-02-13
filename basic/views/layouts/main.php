@@ -41,22 +41,10 @@ AppAsset::register($this);
         $items[] =  ['label' => 'Вход', 'url' => ['/site/login']];
     } else {
         if(Yii::$app->user->identity->role == 1){ //вход как администратор
-            $items[] =  ['label' => 'Главная', 'url' => ['/site/index']];
-            $items[] =  ['label' => 'Адрес', 'url' => ['/admin/address']];
-            $items[] =  ['label' => 'Банковская карта', 'url' => ['/admin/bank-card']];
-            $items[] =  ['label' => 'Корзина', 'url' => ['/admin/busket']];
-            $items[] =  ['label' => 'Категории', 'url' => ['/admin/category']];
-            $items[] =  ['label' => 'Город', 'url' => ['/admin/city']];
-            $items[] =  ['label' => 'Компания', 'url' => ['/admin/company']];
-            $items[] =  ['label' => 'Избранное', 'url' => ['/admin/favourite']];
-            $items[] =  ['label' => 'Изображение', 'url' => ['/admin/image']];
-            $items[] =  ['label' => 'Товар', 'url' => ['/admin/product']];
-            $items[] =  ['label' => 'Отзыв', 'url' => ['/admin/review']];
-            $items[] =  ['label' => 'Пользователь', 'url' => ['/user']];
-            $items[] =  ['label' => 'Информация о заказе', 'url' => ['/admin/zakaz-info']];
-            $items[] =  ['label' => 'Заказ', 'url' => ['/admin/zakaz']];
+            $items[] =  ['label' => 'Административная панель', 'url' => ['/admin']];
         } else { //вход как пользователь
             $items[] =  ['label' => 'Главная', 'url' => ['/site/index']];
+            $items[] =  ['label' => 'Личный кабинет', 'url' => ['/user']];
         }
         $items[] = '<li>'
         . Html::beginForm(['/site/logout'], 'post', ['class' => 'form-inline'])

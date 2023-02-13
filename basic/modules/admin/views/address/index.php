@@ -38,7 +38,7 @@ $this->params['breadcrumbs'][] = $this->title;
             'delivery_comment:ntext',
             'id_user',
             [
-                'class' => ActionColumn::className(),
+                'class' => ActionColumn::className(), 'headerOptions' => ['width' => '60'], 'visible' => $hasAccess,
                 'urlCreator' => function ($action, Address $model, $key, $index, $column) {
                     return Url::toRoute([$action, 'id' => $model->id]);
                  }

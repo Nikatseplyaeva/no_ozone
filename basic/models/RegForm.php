@@ -43,7 +43,7 @@ class RegForm extends User
     public function rules()
     {
         return [
-            [['name', 'login', 'password', 'email', 'phone', 'id_city', 'valuta', 'date_of_birth', 'sex', 'role', 'id_bank_card'], 'required', 'message' => 'Поле обязательно для заполнения!'], //обязательные поля
+            [['name', 'login', 'password', 'email', 'phone', 'id_city', 'valuta', 'date_of_birth', 'sex', 'id_bank_card'], 'required', 'message' => 'Поле обязательно для заполнения!'], //обязательные поля
             [['id_city', 'id_bank_card'], 'integer'],
             ['login', 'unique', 'message' => 'Такой логин уже есть'], //проверка есть ли такой логин
             [['email'], 'email', 'message' => 'Не корректный email!'], //валидация почты

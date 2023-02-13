@@ -1,7 +1,7 @@
 <?php
 
 namespace app\modules\admin\controllers;
-
+use Yii;
 use app\modules\admin\models\Busket;
 use app\modules\admin\models\BusketSearch;
 use yii\web\Controller;
@@ -40,10 +40,13 @@ class BusketController extends Controller
     {
         $searchModel = new BusketSearch();
         $dataProvider = $searchModel->search($this->request->queryParams);
+        $hasAccess = (Yii::$app->user->identity->role == 0) ? false : true;
 
         return $this->render('index', [
             'searchModel' => $searchModel,
             'dataProvider' => $dataProvider,
+            'hasAccess' => $hasAccess,
+
         ]);
     }
 
