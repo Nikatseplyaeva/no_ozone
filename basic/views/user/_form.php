@@ -60,17 +60,6 @@ use app\models\RegForm;
         ];
         echo $form->field($model, 'sex')->dropDownList($items,$params);
     ?>
-     <?php
-        $items = [
-            '0' => 'Обычный пользователь',
-            '1' => 'Админ'
-        ];
-        $params = [
-            'prompt' => 'Выберите роль'
-        ];
-        echo $form->field($model, 'role')->dropDownList($items,$params);
-    ?>
-
     <?= $form->field($model, 'imageFile')->fileInput() ?>
 
     <?php

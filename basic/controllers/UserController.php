@@ -6,6 +6,7 @@ use Yii;
 use app\models\User;
 use app\models\RegForm;
 use app\models\UserSearch;
+use yii\helpers\VarDumper;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
@@ -84,6 +85,11 @@ class UserController extends Controller
 
        if ($this->request->isPost) {
            if ($model->load($this->request->post())) {
+               if(!$model->validate()){
+                   return $this->render('create', [
+                       'model' => $model,
+                   ]);
+               }
                $imageFile1 = UploadedFile::getInstance($model, 'imageFile');
                $imageFile1->saveAs('uploads/' . $imageFile1->baseName . '.' . $imageFile1->extension);
                $model->imageFile = $imageFile1->baseName . '.' . $imageFile1->extension;

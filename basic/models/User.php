@@ -55,7 +55,7 @@ class User extends \yii\db\ActiveRecord  implements \yii\web\IdentityInterface
             [['email'], 'email'],
             [['phone'], 'integer'],
             ['login', 'unique', 'message' => 'Такой логин уже есть'], //проверка есть ли такой логин
-            [['name', 'login', 'password', 'email', 'valuta', 'sex', 'role', 'date_of_birth', 'imageFile'], 'string', 'max' => 250],
+            [['name', 'login', 'password', 'email', 'valuta', 'sex', 'date_of_birth', 'imageFile'], 'string', 'max' => 250],
             [['id_bank_card'], 'exist', 'skipOnError' => true, 'targetClass' => BankCard::class, 'targetAttribute' => ['id_bank_card' => 'id']],
             [['id_city'], 'exist', 'skipOnError' => true, 'targetClass' => City::class, 'targetAttribute' => ['id_city' => 'id']],
         ];
@@ -77,7 +77,6 @@ class User extends \yii\db\ActiveRecord  implements \yii\web\IdentityInterface
             'valuta' => 'Валюта',
             'date_of_birth' => 'Дата рождения',
             'sex' => 'Пол',
-            'role' => 'Роль',
             'imageFile' => 'Изображение',
             'id_bank_card' => 'Банковская карта',
         ];

@@ -43,12 +43,12 @@ class RegForm extends User
     public function rules()
     {
         return [
-            [['name', 'login', 'password', 'email', 'phone', 'id_city', 'valuta', 'date_of_birth', 'sex', 'id_bank_card'], 'required', 'message' => 'Поле обязательно для заполнения!'], //обязательные поля
+            [['name',  'password', 'login', 'email', 'phone', 'id_city', 'valuta', 'date_of_birth', 'sex', 'id_bank_card'], 'required', 'message' => 'Поле обязательно для заполнения!'], //обязательные поля
             [['id_city', 'id_bank_card'], 'integer'],
+
             ['login', 'unique', 'message' => 'Такой логин уже есть'], //проверка есть ли такой логин
             [['email'], 'email', 'message' => 'Не корректный email!'], //валидация почты
             ['name', 'match', 'pattern' => '/^[А-Яа-я\s\-]{3,30}$/u', 'message' => 'Только кириллица, пробелы и дефисы!'], //валидация имени
-            ['login', 'match', 'pattern' => '/^[A-za-z0-9\s\-]{3,30}$/u', 'message' => 'Только латинские буквы и цифры!'], //валидация логина
             [['name', 'login', 'password', 'phone', 'valuta', 'sex', 'role'], 'string', 'max' => 250],
             [['id_bank_card'], 'exist', 'skipOnError' => true, 'targetClass' => BankCard::class, 'targetAttribute' => ['id_bank_card' => 'id']],
             [['id_city'], 'exist', 'skipOnError' => true, 'targetClass' => City::class, 'targetAttribute' => ['id_city' => 'id']],
